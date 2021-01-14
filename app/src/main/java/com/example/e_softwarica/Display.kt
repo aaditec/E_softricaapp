@@ -6,6 +6,7 @@ import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import android.view.MenuItem
 import com.example.e_softwarica.Fragments.AboutFragment
+import com.example.e_softwarica.Fragments.AddFragment
 import com.example.e_softwarica.Fragments.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
