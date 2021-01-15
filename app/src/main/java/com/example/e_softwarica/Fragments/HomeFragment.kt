@@ -9,13 +9,21 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_softwarica.R
+import com.example.e_softwarica.StudentModel
+import com.example.e_softwarica.adepter.StudentAdapter
 import java.util.ArrayList
 
 class HomeFragment : Fragment() {
+    private var rcView: RecyclerView? = null
+    var read = true
+    var studentAdapter = StudentAdapter(activity!!, listOf())
+
+
+
     class AddFragment : Fragment() {
-        private lateinit var rcView: RecyclerView
+        private var rcView: RecyclerView? = null
         var read = true
-        private var studentAdapter = StudentAdapter(getActivity(), list)
+        private var studentAdapter = activity?.let { StudentAdapter(it, list) }
         //List<StudentModel> list;
 
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +32,7 @@ class HomeFragment : Fragment() {
 
         override fun onResume() {
             super.onResume()
-            studentAdapter.notifyDataSetChanged()
+            studentAdapter?.notifyDataSetChanged()
         }
 
         override fun onCreateView(
@@ -35,24 +43,24 @@ class HomeFragment : Fragment() {
             val view = inflater.inflate(R.layout.fragment_home, container, false)
             rcView = view.findViewById(R.id.rcView)
             // rcView.setAdapter(studentAdapter)
-            rcView.addItemDecoration(
+           // rcView.addItemDecoration(
                 DividerItemDecoration(
-                    getActivity(),
+                    activity,
                     LinearLayoutManager.VERTICAL
                 )
-            )
-            rcView.setLayoutManager(LinearLayoutManager(getActivity()))
+
+           //rcView.layoutManager = LinearLayoutManager(activity)
             return view
         }
 
         fun onClick(v: View) {
         }
 
-        companion object {
+
             var list: List<StudentModel> = ArrayList<StudentModel>()
 
         }
     }
-}
+
 
 
